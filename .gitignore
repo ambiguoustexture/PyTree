@@ -3,3 +3,12 @@
 
 # replication-JFE/data/download_portfolios/Bi.csv
 # replication-JFE/data/download_portfolios/Uni.csv
+**/.DS_Store
+**/__pycache__/
+python/.venv/
+python/.pytest_cache/
+python/tests/data/*
+!python/tests/data/P-Tree-Public-Data-main/
+python/build/
+*.egg-info/
+.coverage

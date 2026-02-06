@@ -17,7 +17,15 @@ For windows users, install the package in R session:
 - in command line: `cd ./replication-JFE/`
 - in command line: `sh ProduceExhibits.sh`
 
-# Reference
+## PyTree (Python binding)
+
+Quickstart:
+```bash
+python3 -m pip install ./python
+python3 python/examples/minimal_fit_predict.py
+```
+
+## Reference
 
 - Welcome to cite our paper for PTrees.
 - Open Access paper on JFE website: [Growing the Efficient Frontier on Panel Trees](https://doi.org/10.1016/j.jfineco.2025.104024)

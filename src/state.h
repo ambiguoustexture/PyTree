@@ -197,7 +197,10 @@ public:
             split_candidates[i] = 2.0 / (num_cutpoints + 1) * (i + 1) - 1;
         }
 
-        cout << "The split value candidates are " << split_candidates << endl;
+        if (!ptree_is_quiet())
+        {
+            cout << "The split value candidates are " << split_candidates << endl;
+        }
     }
 
 };

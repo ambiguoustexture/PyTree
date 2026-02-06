@@ -1,0 +1,3 @@
+[submodule "python/tests/data/P-Tree-Public-Data-main"]
+	path = python/tests/data/P-Tree-Public-Data-main
+	url = https://github.com/Quantactix/P-Tree-Public-Data.git

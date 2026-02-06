@@ -49,6 +49,10 @@ char APTree::ntype()
 
 void APTree::pr(bool pc)
 {
+    if (ptree_is_quiet())
+    {
+        return;
+    }
     size_t d = this->depth;
     size_t id = nid();
     size_t pid;
@@ -230,7 +234,10 @@ void APTree::cp(APTree_p n, APTree_cp o)
 {
     if (n->l)
     {
-        std::cout << "cp:error node has children\n";
+        if (!ptree_is_quiet())
+        {
+            std::cout << "cp:error node has children\n";
+        }
         return;
     }
 
@@ -492,16 +499,21 @@ void APTree::grow(bool &break_flag, APTreeModel &model, State &state, size_t &it
         }
         else
         {
-            cout << "break of no good candidate" << endl; // note Sean 20240819. min_leaf_size
+            if (!ptree_is_quiet())
+            {
+                cout << "break of no good candidate" << endl; // note Sean 20240819. min_leaf_size
+            }
             break_flag = true;
         }
     }
     else
     {
-        cout << "break of no node splitable" << endl;  // note Sean 20240819. max_depth
+        if (!ptree_is_quiet())
+        {
+            cout << "break of no node splitable" << endl;  // note Sean 20240819. max_depth
+        }
         break_flag = true;
     }
 
     return;
 }
-

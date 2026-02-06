@@ -16,12 +16,18 @@
 
 #include <iomanip>
 
+#ifdef PTREE_STANDALONE
+#include <armadillo>
+#else
 #include "RcppArmadillo.h"
 #include "Rcpp.h"
+#endif
 
 using namespace std;
 using namespace arma;
+#ifndef PTREE_STANDALONE
 using namespace Rcpp;
+#endif
 
 #define LTPI 1.83787706640934536
 #define CONSTPI 3.1415926535897
@@ -71,7 +77,9 @@ double lasso_loss(const arma::mat &X, const arma::mat &Y, const arma::vec &beta,
 arma::vec lasso_fit_standardized(const arma::mat &X, const arma::mat &Y, double lambda, const arma::vec &beta_ini, double eps);
 
 // indepenent sampler of univariate regression model with conjugate prior
+#ifndef PTREE_STANDALONE
 Rcpp::List runireg_rcpp_loop(arma::vec const &y, arma::mat const &X, arma::vec const &betabar, arma::mat const &A, double nu, double ssq, size_t R, size_t keep);
+#endif
 
 void int_to_bin(size_t num, std::vector<size_t> &s);
 
@@ -82,5 +90,7 @@ double calculate_p_spike(arma::vec &beta, arma::vec &btilde_spike, arma::vec &bt
 double univariate_normal_density(double x, double mu, double sig2);
 
 double normalCDF(double x); // Phi(-∞, x) aka N(x)
+
+bool ptree_is_quiet();
 
 #endif

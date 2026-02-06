@@ -1,5 +1,31 @@
 #include "common.h"
 
+#include <cctype>
+#include <cstdlib>
+
+bool ptree_is_quiet()
+{
+    const char *env = std::getenv("PyTREE_QUIET");
+    if (!env)
+    {
+        return true;
+    }
+    std::string value(env);
+    for (auto &c : value)
+    {
+        c = static_cast<char>(std::tolower(c));
+    }
+    if (value == "0" || value == "false" || value == "no")
+    {
+        return false;
+    }
+    if (value == "1" || value == "true" || value == "yes")
+    {
+        return true;
+    }
+    return true;
+}
+
 // overload to print vectors and vector<vector>
 
 std::ostream &operator<<(std::ostream &out, const std::vector<double> &v)
